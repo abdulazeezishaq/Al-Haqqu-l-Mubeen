@@ -421,6 +421,16 @@ ul{ margin:0; padding:0; list-style:none; }
 }
 .bento__cell--img .icon-btn{ position:absolute; right:16px; bottom:16px; z-index:2; }
 
+/* full-width photo band — same corner radius as the green band and footer */
+.band-media{
+  width:100%;
+  height:clamp(320px,50vw,680px);
+  object-fit:cover;
+  object-position:center 55%;   /* keep faces in frame on the wide crop */
+  border-radius:var(--r-xl);
+}
+@media (max-width:640px){ .band-media{ border-radius:var(--r-lg); } }
+
 /* -------------------------- 15. Quote band ------------------------------ */
 .quote-band{ text-align:center; }
 .quote-band .ar{
