@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<meta name="description" content="{{DESC}}">
+<meta name="theme-color" content="#009C3C">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{DESC}}">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/img/logo-512.jpg">
+<link rel="icon" href="assets/img/logo-160.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="nav">
+  <div class="container nav__inner">
+    <a class="brand" href="index.html" aria-label="Al-Haqqu l-Mubeen Arabic and Islamic Relations — home">
+      <img class="brand__mark" src="assets/img/logo-160.jpg" alt="" width="44" height="44" loading="eager" decoding="async">
+      <span class="brand__text">
+        <span class="brand__name">Al-Haqqu l-Mubeen</span>
+        <span class="brand__sub">Arabic &amp; Islamic Relations</span>
+      </span>
+    </a>
+
+    <nav class="nav__links" aria-label="Main">
+      <a href="index.html"{{ACTIVE_HOME}}>Home</a>
+      <a href="about.html"{{ACTIVE_ABOUT}}>About</a>
+      <a href="donate.html"{{ACTIVE_DONATE}}>Donate</a>
+      <a href="contact.html"{{ACTIVE_CONTACT}}>Contact</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn" href="donate.html">Donate Now <svg class="arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      <button class="nav__burger" type="button" aria-expanded="false" aria-label="Toggle navigation menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="shell">
+
+  <main id="main">

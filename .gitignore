@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+.AppleDouble
+._*
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Logs and local scratch
+*.log
+_qa.html
+_qam.html
+
+# Dependencies (none today, but keep them out if any are added)
+node_modules/
