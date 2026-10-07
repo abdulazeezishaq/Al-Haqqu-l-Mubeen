@@ -794,6 +794,7 @@ select.input{
 .person .media{ aspect-ratio:1/1; margin-bottom:16px; }
 .person h3{ font-size:15px; margin:0 0 3px; }
 .person p{ margin:0; font-size:13px; color:var(--muted); }
+.person__cred{ margin-top:7px !important; font-size:11.5px; line-height:1.5; opacity:.85; }
 
 .step-list li{
   display:flex; gap:14px; align-items:flex-start;
