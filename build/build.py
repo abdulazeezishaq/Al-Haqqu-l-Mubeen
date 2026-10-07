@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Assemble the static AHM pages from partials.
+"""Assemble the static Al-Haqqu l-Mubeen pages from partials.
 
 Usage:  python3 build/build.py
 Output: index.html, about.html, donate.html, contact.html in the project root.
@@ -13,21 +13,19 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 P = ROOT / "build" / "partials"
 PAGES = ROOT / "build" / "pages"
 
-HEAD = (P / "head.html").read_text()
-FOOT = (P / "foot.html").read_text()
 
 PAGE_META = {
     "index": ("Al-Haqqu l-Mubeen Arabic and Islamic Relations | Knowledge, Compassion, Community",
-              "AHM promotes the genuine Islamic values of compassion, justice and the common good "
+              "Al-Haqqu l-Mubeen promotes the genuine Islamic values of compassion, justice and the common good "
               "through research, education, dialogue and support for orphans, widows and those in need."),
     "about": ("About Us | Al-Haqqu l-Mubeen Arabic and Islamic Relations",
-              "Founded by Muslim scholars and intellectuals, AHM channels Islamic philanthropy, "
+              "Founded by Muslim scholars and intellectuals, Al-Haqqu l-Mubeen channels Islamic philanthropy, "
               "grants and endowments into education, research, dialogue and care across Africa."),
     "donate": ("Donate | Al-Haqqu l-Mubeen Arabic and Islamic Relations",
                "Give once or monthly to support orphans, widows, Islamic education, research and "
                "our Ramadan radio programmes. Waqf, fundraising and grant partnerships welcome."),
     "contact": ("Contact Us | Al-Haqqu l-Mubeen Arabic and Islamic Relations",
-                "Reach the AHM team in Osogbo, Osun State, Nigeria — for enquiries, volunteering, "
+                "Reach the Al-Haqqu l-Mubeen team in Osogbo, Osun State, Nigeria — for enquiries, volunteering, "
                 "partnerships, school programmes and media."),
 }
 
@@ -41,9 +39,13 @@ def include(body: str) -> str:
 
 
 def build():
+    # read on every build: a long-running watcher must pick up partial edits
+    head_tpl = (P / "head.html").read_text()
+    foot_tpl = (P / "foot.html").read_text()
+
     for slug, (title, desc) in PAGE_META.items():
         body = include((PAGES / f"{slug}.html").read_text())
-        head = (HEAD
+        head = (head_tpl
                 .replace("{{TITLE}}", title)
                 .replace("{{DESC}}", desc))
         for key in ("HOME", "ABOUT", "DONATE", "CONTACT"):
@@ -58,7 +60,7 @@ def build():
             "  Any edit made here is overwritten on the next build.\n"
             "-->\n"
         )
-        (ROOT / f"{slug}.html").write_text(banner + head + body + FOOT)
+        (ROOT / f"{slug}.html").write_text(banner + head + body + foot_tpl)
         print(f"built {slug}.html")
 
 
