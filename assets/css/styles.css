@@ -335,7 +335,7 @@ ul{ margin:0; padding:0; list-style:none; }
 .logos{ border-block:1px solid var(--line); padding-block:34px; }
 .logos__row{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns:repeat(3, minmax(0,1fr));
   gap:24px 28px;
 }
 .logo-item{
@@ -696,7 +696,7 @@ select.input{
   .grid--3{ grid-template-columns:repeat(2,1fr); }
   .bento{ grid-template-columns:repeat(2,1fr); }
   .bento__cell--wide{ grid-column:span 2; }
-  .logos__row{ grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:22px; }
+  .logos__row{ grid-template-columns:repeat(2, minmax(0,1fr)); gap:22px; }
   .cta-banner__inner{ grid-template-columns:1fr; }
   .cta-banner__right{ justify-self:start; text-align:left; }
   .footer__grid{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:32px; }
@@ -721,6 +721,7 @@ select.input{
   .brand__name{ font-size:16px; }
   .brand__sub{ font-size:8.5px; letter-spacing:.14em; }
   .split{ gap:32px; }
+  .logos__row{ grid-template-columns:minmax(0,1fr); }
 
   /* the hero sat 76px below the navbar because .section's padding-block
      overrode .hero's padding-top further up this block — halve it */
