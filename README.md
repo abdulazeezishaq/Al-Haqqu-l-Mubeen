@@ -43,8 +43,12 @@ They were generated from `build/` so the navbar and footer only exist in one
 place. If you edit the shared parts, regenerate with:
 
 ```bash
-python3 build/build.py
+python3 build/build.py       # build once
+python3 build/watch.py       # or: rebuild automatically as you edit
 ```
+
+Each generated file opens with a comment saying so, naming the source file to
+edit instead.
 
 `build/partials/` holds the head + navbar (`head.html`), footer (`foot.html`),
 the Qur'an quote band (`quote.html`) and the "GIVE / HELP OTHERS" banner
