@@ -614,7 +614,12 @@ select.input{
   content:""; position:absolute; inset:0; opacity:.05;
   background-image:radial-gradient(#fff 1.2px, transparent 1.2px); background-size:26px 26px;
 }
-.footer__grid{ position:relative; display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:40px; }
+.footer__grid{
+  position:relative; display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:40px;
+}
+.footer__grid > *{ min-width:0; }
 .footer .brand__name{ color:#fff; }
 .footer .brand__sub{ color:rgba(255,255,255,.6); }
 .footer .brand__mark{ mix-blend-mode:normal; background:#fff; padding:2px; }
@@ -624,13 +629,6 @@ select.input{
 .footer a:hover{ color:#fff; }
 .footer p{ color:rgba(255,255,255,.7); font-size:14px; }
 
-.newsletter{ display:flex; gap:8px; margin-top:22px; max-width:340px; }
-.newsletter input{
-  flex:1; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18);
-  color:#fff; border-radius:var(--r-pill); padding:13px 18px; font:inherit; font-size:14px;
-}
-.newsletter input::placeholder{ color:rgba(255,255,255,.5); }
-.newsletter input:focus{ outline:none; border-color:var(--flame); }
 .footer .contact-li{ display:flex; gap:11px; align-items:flex-start; color:rgba(255,255,255,.85); font-size:14px; }
 .footer .contact-li svg{ width:16px; height:16px; flex:none; margin-top:4px; color:var(--flame); }
 .socials{ display:flex; gap:10px; margin-top:24px; }
@@ -666,7 +664,7 @@ select.input{
   .hero__grid{ gap:36px; }
   .split{ gap:40px; }
   .carousel__track{ grid-auto-columns:calc((100% - 24px)/2); }
-  .footer__grid{ grid-template-columns:1.4fr 1fr 1fr; }
+  .footer__grid{ grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr); }
   .footer__col--last{ grid-column:span 3; }
 }
 @media (max-width:900px){
@@ -697,13 +695,12 @@ select.input{
   .logos__row{ grid-template-columns:repeat(2,1fr); gap:22px; }
   .cta-banner__inner{ grid-template-columns:1fr; }
   .cta-banner__right{ justify-self:start; text-align:left; }
-  .footer__grid{ grid-template-columns:1fr 1fr; }
+  .footer__grid{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:32px; }
   .footer__col--last{ grid-column:span 2; }
 }
 @media (max-width:640px){
   :root{ --shell-pad:8px; --s-10:76px; --s-9:60px; --s-8:48px; --nav-h:68px; }
   .shell{ border-radius:var(--r-lg); }
-  .hero{ padding-top:var(--s-5); }
   .container{ padding-inline:18px; }
   .section{ padding-block:var(--s-10); }
   .grid--2,.grid--3,.grid--4,.form-row{ grid-template-columns:1fr; }
@@ -720,6 +717,29 @@ select.input{
   .brand__name{ font-size:16px; }
   .brand__sub{ font-size:8.5px; letter-spacing:.14em; }
   .split{ gap:32px; }
+
+  /* the hero sat 76px below the navbar because .section's padding-block
+     overrode .hero's padding-top further up this block — halve it */
+  .section.hero{ padding-top:38px; }
+
+  /* hero collage: drop the third photo, stack the other two */
+  .collage{ grid-template-columns:minmax(0,1fr); gap:12px; }
+  .collage__a{ grid-row:auto; }
+  .collage__c{ display:none; }
+  .collage__a .media,.collage__b .media{ aspect-ratio:4/3; }
+
+  /* the full-width photo band gets the same side gutter as the content */
+  .band-media{
+    width:calc(100% - 36px);
+    margin-inline:18px;
+    height:clamp(240px,62vw,360px);
+  }
+
+  /* footer: one column, nothing squeezed or overlapping */
+  .footer__grid{ grid-template-columns:minmax(0,1fr); gap:34px; }
+  .footer__col--last{ grid-column:auto; }
+  .footer__bottom{ margin-top:38px; gap:10px; }
+  .footer__bottom p{ font-size:12px; }
 }
 
 /* --------------------------- 27. Print ---------------------------------- */
