@@ -6,13 +6,12 @@ folder to any static host (Netlify, Vercel, cPanel, GitHub Pages).
 
 ```
 .
-├── index.html  about.html  donate.html  contact.html   ← the deliverable
-├── assets/
-│   ├── css/styles.css        design system + all components
-│   ├── js/main.js            nav, reveals, counters, carousel, accordion,
-│   │                         donation form, dotted map, clipboard, forms
-│   └── img/                  logo + photography (2.4 MB total)
-└── build/                    optional: partials + generator (see below)
+├── index.html  about.html  donate.html  contact.html   ← the four pages
+└── assets/
+    ├── css/styles.css        design system + all components
+    ├── js/main.js            nav, reveals, counters, carousel, accordion,
+    │                         donation form, dotted map, clipboard, forms
+    └── img/                  logo + photography
 ```
 
 ## Design system
@@ -37,23 +36,27 @@ Every colour pair used for text meets WCAG AA (verified: body copy on beige
 
 ## Editing the pages
 
-The four HTML files are plain static pages — edit them directly if you prefer.
+Every file is edited directly — open the project in any editor and change the
+HTML, CSS or JS. There is no build step and nothing generates these files.
 
-They were generated from `build/` so the navbar and footer only exist in one
-place. If you edit the shared parts, regenerate with:
+| To change | Edit |
+| --- | --- |
+| A page's content | that page's `.html` file |
+| Styling | `assets/css/styles.css` |
+| Behaviour (carousel, accordion, forms, map) | `assets/js/main.js` |
 
-```bash
-python3 build/build.py       # build once
-python3 build/watch.py       # or: rebuild automatically as you edit
-```
+**The navbar and footer are repeated in all four pages.** Change one and you
+must make the same change in `index.html`, `about.html`, `donate.html` and
+`contact.html`, or they will drift apart. Search for `<header class="nav">`
+and `<footer class="footer">` to find them.
 
-Each generated file opens with a comment saying so, naming the source file to
-edit instead.
+Several blocks are switched off with a `hidden` attribute rather than deleted,
+so they can be brought back by removing that one attribute:
 
-`build/partials/` holds the head + navbar (`head.html`), footer (`foot.html`),
-the Qur'an quote band (`quote.html`) and the "GIVE / HELP OTHERS" banner
-(`cta.html`). `build/pages/` holds each page's body. **If you edit the root HTML
-files directly, do not run the build script afterwards — it will overwrite them.**
+- the donation form on `donate.html`
+- the donor testimonials on `donate.html`
+- the testimonials on `index.html`
+- the review row (avatars, stars, supporter count) in the hero on `index.html`
 
 ## Placeholders to replace before launch
 
@@ -92,7 +95,7 @@ an `action` and `method` and removing `data-demo-form`.
 **Map** — the Contact page has a rounded map placeholder. Replace the block
 inside `.map-embed` with the Google Maps or OpenStreetMap `<iframe>`.
 
-## Notes on the build
+## Notes on the implementation
 
 - **Logo**: `assets/img/logo-160.jpg` and `logo-512.jpg` are downscaled from the
   supplied artwork. It sits on light surfaces with `mix-blend-mode: multiply` so
@@ -117,7 +120,11 @@ inside `.map-embed` with the Google Maps or OpenStreetMap `<iframe>`.
 ## Local preview
 
 ```bash
-python3 -m http.server 8777
+cd ~/ahm-website && python3 -m http.server 8777
 ```
 
 Then open <http://127.0.0.1:8777/>.
+
+If you replace an image but keep its filename, the browser will keep showing
+the old one — it caches by URL. A hard refresh (<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd>)
+fetches the new file.

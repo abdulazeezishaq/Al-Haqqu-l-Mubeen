@@ -17,6 +17,3 @@ _qam.html
 # Dependencies (none today, but keep them out if any are added)
 node_modules/
 
-# Python bytecode
-__pycache__/
-*.pyc
