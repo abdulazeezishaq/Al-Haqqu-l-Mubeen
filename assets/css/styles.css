@@ -602,11 +602,6 @@ select.input{
 .tag svg{ width:15px; height:15px; color:var(--green-ink); transition:color .25s; }
 .tag:hover svg{ color:#fff; }
 
-.map-embed{
-  border-radius:var(--r-xl); overflow:hidden; background:var(--beige);
-  aspect-ratio:21/9; display:grid; place-items:center; text-align:center;
-  border:1px dashed var(--line-strong); padding:24px;
-}
 
 /* --------------------------- 23. Footer --------------------------------- */
 .footer{
